@@ -24,8 +24,8 @@ The following scenario / functionality is covered:
  
 ## Documentation
 
- * For a full description of available functionality, read the [JavaDoc](https://kartoffelquadrat.github.io/XoxInternals/index.html)
- * The relevant functionality is exposed in [```XoxManagerImpl.java```](https://kartoffelquadrat.github.io/XoxInternals/eu/kartoffelquadrat/xoxinternals/controller/XoxManagerImpl.html).
+ * For a full description of available functionality, read the [JavaDoc](https://m5c.github.io/XoxInternals/index.html)
+ * The relevant functionality is exposed in [```XoxManagerImpl.java```](https://m5c.github.io/XoxInternals/eu/kartoffelquadrat/xoxinternals/controller/XoxManagerImpl.html).
 
 ## Usage
 
