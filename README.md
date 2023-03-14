@@ -2,7 +2,7 @@
 
 Vanilla java code of a simple implementation of Tic Tac Toe. Not user interface, only controller and model code.
 
-![version](https://img.shields.io/badge/version-1.3-brightgreen)
+![version](https://img.shields.io/badge/version-1.6-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)
 ![building](https://img.shields.io/badge/build-passing-brightgreen)
 
