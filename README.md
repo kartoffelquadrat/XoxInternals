@@ -42,8 +42,8 @@ On execution, the game will simply print a listing of an intial test setup.
 
 ## Contact / Pull Requests
 
- * Author: Maximilian Schiedermeier ![email](email.png)
- * Github: Kartoffelquadrat
+ * Author: [Maximilian Schiedermeier](mailto:maximilian.schiedermeier@mcgill.ca?subject=XoxInternals&body=XoxInternals)
+ * Github: m5c
  * Webpage: https://www.cs.mcgill.ca/~mschie3
  * License: [MIT](https://opensource.org/licenses/MIT)
 
