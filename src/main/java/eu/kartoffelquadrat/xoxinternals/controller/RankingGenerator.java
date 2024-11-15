@@ -3,8 +3,8 @@ package eu.kartoffelquadrat.xoxinternals.controller;
 import eu.kartoffelquadrat.xoxinternals.model.XoxGameReadOnly;
 
 /**
- * Custom game specific classes implementing this interface can be applied on a game at any state, to compute the
- * current ranking (scores per player, descending order.)
+ * Custom game specific classes implementing this interface can be applied on a game at any state,
+ * to compute the current ranking (scores per player, descending order.)
  *
  * @author Maximilian Schiedermeier
  */

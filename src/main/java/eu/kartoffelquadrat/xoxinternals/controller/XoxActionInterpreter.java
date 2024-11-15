@@ -6,9 +6,10 @@ import eu.kartoffelquadrat.xoxinternals.model.XoxGameReadOnly;
 import java.util.Collection;
 
 /**
- * Business Logic class that applies a Xox Action on a provided Xox model instance. A Xox action encodes a players
- * request to lay on a given position. The ActionInterpreter verifies that the action is legal for the provided user. If
- * this is the case the provided Xox model instance is modified as requested.
+ * Business Logic class that applies a Xox Action on a provided Xox model instance. A Xox action
+ * encodes a players request to lay on a given position. The ActionInterpreter verifies that the
+ * action is legal for the provided user. If this is the case the provided Xox model instance is
+ * modified as requested.
  *
  * @author Maximilian Schiedermeier
  */
@@ -19,7 +20,8 @@ public class XoxActionInterpreter implements ActionInterpreter {
   /**
    * Constructor for new action interpreter instance.
    *
-   * @param actionGenerator as the entity being able to analyze a game and generate all possible actions.
+   * @param actionGenerator as the entity being able to analyze a game and generate all possible
+   *                        actions.
    * @param endingAnalyzer  as tge entity being able to determine whether a game is over.
    */
   public XoxActionInterpreter(XoxActionGenerator actionGenerator,
@@ -55,8 +57,8 @@ public class XoxActionInterpreter implements ActionInterpreter {
   }
 
   /**
-   * Helper method verify if a specific xox action is contained in an actions bundle. The action is identified by grid
-   * position and player information.
+   * Helper method verify if a specific xox action is contained in an actions bundle. The action is
+   * identified by grid position and player information.
    */
   private boolean isValidAction(XoxGameReadOnly game, XoxClaimFieldAction selectedAction)
       throws LogicException {

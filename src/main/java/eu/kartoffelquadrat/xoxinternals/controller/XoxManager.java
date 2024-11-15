@@ -24,11 +24,11 @@ public interface XoxManager {
   void removeGame(long gameId);
 
   /**
-   * Creates a new game entity with the parameters specified as payload. (players, preferredColours). The game new
-   * game id is created randomly.
+   * Creates a new game entity with the parameters specified as payload. (players,
+   * preferredColours). The game new game id is created randomly.
    *
-   * @param initSettings as a settings bundle specifying details for the new game. (Player names, player colours,
-   *                     creator)
+   * @param initSettings as a settings bundle specifying details for the new game. (Player names,
+   *                     player colours, creator)
    * @return id of the newly created game.
    */
   long addGame(XoxInitSettings initSettings);
@@ -42,29 +42,30 @@ public interface XoxManager {
   BoardReadOnly getBoard(long gameId);
 
   /**
-   * Getter for static player objects (names, preferred colours) of the participants of the game instance referenced
-   * by the provided game-id.
+   * Getter for static player objects (names, preferred colours) of the participants of the game
+   * instance referenced by the provided game-id.
    *
    * @param gameId as the identifier of the game to inspect, provided as long.
-   * @return immutably deep copy of players participating in game and their attributes (name, preferred colour). If no
-   * such game is initialized, null is returned.
+   * @return immutably deep copy of players participating in game and their attributes (name,
+   *     preferred colour). If no such game is initialized, null is returned.
    */
   Player[] getPlayers(long gameId);
 
   /**
    * Method to look up possible actions for a given player.
    *
-   * @param player as the player requesting a set of available actions in a running. Will return an empty collection
-   *               if the player is not recognized.
+   * @param player as the player requesting a set of available actions in a running. Will return an
+   *               empty collection if the player is not recognized.
    * @param gameId as the identifier of the game to inspect, provided as long.
-   * @return A map, indexing actions by the MD5 representation of their json string serialization. The index serves as
-   * key for later re-identification if an actions is selected. Returns null if no such game is currently initialized.
+   * @return A map, indexing actions by the MD5 representation of their json string serialization .
+   *     The index serves as key for later re-identification if an actions is selected. Returns null
+   *     if no such game is currently initialized.
    */
   XoxClaimFieldAction[] getActions(long gameId, String player);
 
   /**
-   * Blackboard-style way to allow a client select a specific operation. The operation is identified by the MD5
-   * representation of it's JSON serialization.
+   * Blackboard-style way to allow a client select a specific operation. The operation is identified
+   * by the MD5 representation of it's JSON serialization.
    *
    * @param player      as the player requesting to play an action
    * @param gameId      as the identifier of the game to inspect, provided as long.
@@ -73,8 +74,8 @@ public interface XoxManager {
   void performAction(long gameId, String player, int actionIndex);
 
   /**
-   * Returns current player scores as a serialized ranking object. The ranking object also tells if the game has
-   * already ended.
+   * Returns current player scores as a serialized ranking object. The ranking object also tells if
+   * the game has already ended.
    *
    * @param gameId as the identifier of the game to inspect, provided as long.
    * @return a ranking bundle object with details on the players and their scores.

@@ -16,8 +16,8 @@ public class XoxEndingAnalyzer implements EndingAnalyzer {
   }
 
   /**
-   * Verifies whether the game already fulfils any end criteria. Marks the game as finished, if at least criterion one
-   * detected.
+   * Verifies whether the game already fulfils any end criteria. Marks the game as finished, if at
+   * least criterion one detected.
    *
    * @param game as the xox game object to be analysed and potentially flagged as finished.
    * @return boolean to indicate whether the game is already finished.
@@ -33,7 +33,7 @@ public class XoxEndingAnalyzer implements EndingAnalyzer {
       return true;
     }
     // check if one player has 3 in a line
-    if (xoxGame.getModifiableBoard().isThreeInALine()) {
+    if (xoxGame.getModifiableBoard().isThreeInaLine()) {
       xoxGame.markAsFinished();
       return true;
     }

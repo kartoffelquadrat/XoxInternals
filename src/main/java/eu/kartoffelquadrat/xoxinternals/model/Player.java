@@ -13,7 +13,8 @@ public class Player {
    * Constructor for new player objects.
    *
    * @param name            as the human-readable player name.
-   * @param preferredColour as description of the preferred colour (hexadecimal string prefixed by hash sign).
+   * @param preferredColour as description of the preferred colour (hexadecimal string prefixed by
+   *                        hash sign).
    */
   public Player(String name, String preferredColour) {
     this.name = name;

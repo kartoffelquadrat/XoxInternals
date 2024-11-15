@@ -1,8 +1,8 @@
 package eu.kartoffelquadrat.xoxinternals.model;
 
 /**
- * Custom Exception that is fired whenever model modifications are requested that would lead to an inconsistent
- * state.
+ * Custom Exception that is fired whenever model modifications are requested that would lead to an
+ * inconsistent state.
  *
  * @author Maximilian Schiedermeier
  */

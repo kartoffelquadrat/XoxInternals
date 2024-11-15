@@ -1,14 +1,15 @@
 package eu.kartoffelquadrat.xoxinternals.model;
 
 /**
- * Xox specific implementation of the board interface. Encodes 3x3 matrix with individually maintained state model per
- * cell.
+ * Xox specific implementation of the board interface. Encodes 3x3 matrix with individually
+ * maintained state model per cell.
  *
  * @author Maximilian Schiedermeier
  */
 public class BoardImpl implements Board {
   // States of cells are encoded by Characters:
-  // ' ': empty. 'x': occupied by x, 'o': occupied by o, 'X' winning cell of x, 'O' winning cell of o.
+  // ' ': empty. 'x': occupied by x, 'o': occupied by o, 'X' winning cell of x, 'O' winning cell
+  // of o.
   private final int[][] cells;
 
   /**
@@ -31,15 +32,13 @@ public class BoardImpl implements Board {
     return true;
   }
 
-
   @Override
-  public boolean isThreeInALine() {
-    return (getThreeInALineCharIfExists() != 0);
+  public boolean isThreeInaLine() {
+    return (getThreeInaLineCharIfExists() != 0);
   }
 
-
   @Override
-  public int getThreeInALineCharIfExists() {
+  public int getThreeInaLineCharIfExists() {
     // check for three in a row
     for (int y = 0; y < cells[0].length; y++) {
       if (cells[0][y] == cells[1][y] && cells[1][y] == cells[2][y]) {
@@ -63,8 +62,8 @@ public class BoardImpl implements Board {
   }
 
   @Override
-  public boolean isFree(int xPos, int yPos) {
-    return cells[yPos][xPos] == 0;
+  public boolean isFree(int xpos, int ypos) {
+    return cells[ypos][xpos] == 0;
   }
 
   @Override
@@ -93,11 +92,11 @@ public class BoardImpl implements Board {
   }
 
   @Override
-  public void occupy(int xPos, int yPos, boolean firstPlayer) throws ModelAccessException {
-    if (!isFree(xPos, yPos)) {
+  public void occupy(int xpos, int ypos, boolean firstPlayer) throws ModelAccessException {
+    if (!isFree(xpos, ypos)) {
       throw new ModelAccessException("Requested cell can not by occupied. Is not free.");
     }
-    cells[yPos][xPos] = (firstPlayer ? 1 : 2);
+    cells[ypos][xpos] = (firstPlayer ? 1 : 2);
   }
 
   @Override

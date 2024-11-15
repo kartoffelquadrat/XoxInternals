@@ -23,31 +23,34 @@ public interface BoardReadOnly {
   /**
    * Tells whether a given position in x any is currently vacant.
    *
-   * @param xPos as the horizontal position to test.
-   * @param yPos as the horizontal position to test.
+   * @param xpos as the horizontal position to test.
+   * @param ypos as the horizontal position to test.
    * @return vacant status of specified cell.
    */
-  boolean isFree(int xPos, int yPos);
+  boolean isFree(int xpos, int ypos);
 
   /**
-   * Returns 2D array representation of xox board, indicating if individual cells are empty, or occupied by a player.
+   * Returns 2D array representation of xox board, indicating if individual cells are empty, or
+   * occupied by a player.
    *
    * @return int[][] where first dimension is x, second y.
    */
   int[][] getCells();
 
   /**
-   * Inspects the cells and returns true if three equal symbols lie on row, column or main diagonal.
+   * Inspects the cells and returns true if three equal symbols lie on row, column or main
+   * diagonal.
    *
-   * @return boolean telling whether on the current board there are three cells in a line, claimed by the same player.
+   * @return boolean telling whether on the current board there are three cells in a line, claimed
+   *     by the same player.
    */
-  boolean isThreeInALine();
+  boolean isThreeInaLine();
 
   /**
-   * If there are three in a line, this method returns the character of those cells. If there are not, it returns the
-   * space character.
+   * If there are three in a line, this method returns the character of those cells. If there are
+   * not, it returns the space character.
    *
    * @return a character indicating the occupier of the line or a whitespace.
    */
-  int getThreeInALineCharIfExists();
+  int getThreeInaLineCharIfExists();
 }

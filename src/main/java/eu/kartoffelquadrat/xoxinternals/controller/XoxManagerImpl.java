@@ -11,10 +11,11 @@ import java.util.LinkedHashMap;
 import java.util.Random;
 
 /**
- * Xox Controller Implementation. Acts as DAO for game state and provides endpoints to generate actions that allow state
- * modification. Indexes all running games and allows game-specific access by game-id. Note that for simplicity the
- * signatures of this controller do not support error handling. In case of bad parameters, the controller will simply
- * ignore a method call or return an empty return object.
+ * Xox Controller Implementation. Acts as DAO for game state and provides endpoints to generate
+ * actions that allow state modification. Indexes all running games and allows game-specific access
+ * by game-id. Note that for simplicity the signatures of this controller do not support error
+ * handling. In case of bad parameters, the controller will simply ignore a method call or return an
+ * empty return object.
  *
  * @author Maximilian Schiedermeier
  */
@@ -26,8 +27,8 @@ public class XoxManagerImpl implements XoxManager {
   private final RankingGenerator rankingGenerator;
 
   /**
-   * Private default constructor for singleton pattern. Initializes all required util classes and start a new game
-   * with players "X" and "O".
+   * Private default constructor for singleton pattern. Initializes all required util classes and
+   * start a new game with players "X" and "O".
    */
   private XoxManagerImpl() {
     actionGenerator = new XoxActionGenerator();
@@ -38,8 +39,8 @@ public class XoxManagerImpl implements XoxManager {
   }
 
   /**
-   * Singleton access method to obtain the controller instance. First call implicitly initializes a new game for
-   * players "X" and "O".
+   * Singleton access method to obtain the controller instance. First call implicitly initializes a
+   * new game for players "X" and "O".
    *
    * @return unique singleton representative of this class.
    */
@@ -97,10 +98,9 @@ public class XoxManagerImpl implements XoxManager {
     }
     // Look up player and build an action bundle. (only non empty for current player)
     Player playerObject = games.get(gameId).getPlayerByName(player);
-    if (playerObject == null)
     // Return empty map if the player is not recognized.
     // Error handling ignored for case study simplicity.
-    {
+    if (playerObject == null) {
       return new XoxClaimFieldAction[] {};
     }
     try {
@@ -126,7 +126,6 @@ public class XoxManagerImpl implements XoxManager {
       actionInterpreter.interpretAndApplyAction(selectedAction, games.get(gameId));
     } catch (LogicException | ModelAccessException internalException) {
       // Error handling ignored for case study simplicity.
-      return;
     }
   }
 
@@ -150,10 +149,10 @@ public class XoxManagerImpl implements XoxManager {
       throw new RuntimeException("Sample game can only be added as first game");
     }
     // Initialize sample game object
-    XoxGameImpl
-        sampleGame = new XoxGameImpl(new Player("Max", "#CAFFEE"), new Player("Moritz", "#1CE7EA"));
+    XoxGameImpl sampleGame =
+        new XoxGameImpl(new Player("Max", "#CAFFEE"), new Player("Moritz", "#1CE7EA"));
     // Add sample game at fixed index ... (Note: all other game ID must be generated dynamically)
-    games.put(new Long(42), sampleGame);
+    games.put(Long.valueOf(42), sampleGame);
   }
 
   /**
@@ -161,7 +160,7 @@ public class XoxManagerImpl implements XoxManager {
    */
   private long generateUniqueGameId() {
     long randomGameId = Math.abs(new Random().nextLong());
-    while (games.keySet().contains(randomGameId)) {
+    while (games.containsKey(randomGameId)) {
       randomGameId = Math.abs(new Random().nextLong());
     }
     return randomGameId;
