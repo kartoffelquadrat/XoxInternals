@@ -3,7 +3,7 @@ package eu.kartoffelquadrat.xoxinternals.controller;
 import eu.kartoffelquadrat.xoxinternals.model.BoardReadOnly;
 import eu.kartoffelquadrat.xoxinternals.model.ModelAccessException;
 import eu.kartoffelquadrat.xoxinternals.model.Player;
-import eu.kartoffelquadrat.xoxinternals.model.XoxGame;
+import eu.kartoffelquadrat.xoxinternals.model.XoxGameImpl;
 import eu.kartoffelquadrat.xoxinternals.model.XoxInitSettings;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class XoxManagerImpl implements XoxManager {
   private static XoxManagerImpl singletonReference;
   private final XoxActionGenerator actionGenerator;
   private final ActionInterpreter actionInterpreter;
-  private final HashMap<Long, XoxGame> games;
+  private final HashMap<Long, XoxGameImpl> games;
   private final RankingGenerator rankingGenerator;
 
   /**
@@ -60,7 +60,6 @@ public class XoxManagerImpl implements XoxManager {
     games.remove(gameId);
   }
 
-
   @Override
   public long addGame(XoxInitSettings initSettings) {
     // Generate a new random game id
@@ -70,19 +69,17 @@ public class XoxManagerImpl implements XoxManager {
       initSettings.getPlayers().add(initSettings.getPlayers().removeFirst());
     }
     games.put(gameId,
-        new XoxGame(initSettings.getPlayers().getFirst(), initSettings.getPlayers().getLast()));
+        new XoxGameImpl(initSettings.getPlayers().getFirst(), initSettings.getPlayers().getLast()));
     return gameId;
   }
-
 
   @Override
   public BoardReadOnly getBoard(long gameId) {
     if (!games.containsKey(gameId)) {
       return null;
     }
-    return games.get(gameId).getBoard();
+    return games.get(gameId).getModifiableBoard();
   }
-
 
   @Override
   public Player[] getPlayers(long gameId) {
@@ -91,7 +88,6 @@ public class XoxManagerImpl implements XoxManager {
     }
     return games.get(gameId).getPlayers();
   }
-
 
   @Override
   public XoxClaimFieldAction[] getActions(long gameId, String player) {
@@ -116,7 +112,6 @@ public class XoxManagerImpl implements XoxManager {
     }
   }
 
-
   @Override
   public void performAction(long gameId, String player, int actionIndex) {
     // Reject if no such game is currently initialized
@@ -134,7 +129,6 @@ public class XoxManagerImpl implements XoxManager {
       return;
     }
   }
-
 
   @Override
   public Ranking getRanking(long gameId) {
@@ -156,7 +150,8 @@ public class XoxManagerImpl implements XoxManager {
       throw new RuntimeException("Sample game can only be added as first game");
     }
     // Initialize sample game object
-    XoxGame sampleGame = new XoxGame(new Player("Max", "#CAFFEE"), new Player("Moritz", "#1CE7EA"));
+    XoxGameImpl
+        sampleGame = new XoxGameImpl(new Player("Max", "#CAFFEE"), new Player("Moritz", "#1CE7EA"));
     // Add sample game at fixed index ... (Note: all other game ID must be generated dynamically)
     games.put(new Long(42), sampleGame);
   }

@@ -2,7 +2,7 @@ package eu.kartoffelquadrat.xoxinternals;
 
 import eu.kartoffelquadrat.xoxinternals.controller.XoxClaimFieldAction;
 import eu.kartoffelquadrat.xoxinternals.controller.XoxManagerImpl;
-import eu.kartoffelquadrat.xoxinternals.model.Board;
+import eu.kartoffelquadrat.xoxinternals.model.BoardImpl;
 import eu.kartoffelquadrat.xoxinternals.model.BoardReadOnly;
 import eu.kartoffelquadrat.xoxinternals.model.XoxInitSettings;
 import org.junit.Assert;
@@ -100,7 +100,7 @@ public class ManagerTest extends XoxTestUtils {
     public void testGetBoard() {
         XoxManagerImpl.getInstance();
 
-        Board emptyReferenceBoard = new Board();
+        BoardImpl emptyReferenceBoard = new BoardImpl();
 
         // Verify the game board is all empty.
         BoardReadOnly board = XoxManagerImpl.getInstance().getBoard(42);

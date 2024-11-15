@@ -35,4 +35,19 @@ public interface BoardReadOnly {
    * @return int[][] where first dimension is x, second y.
    */
   int[][] getCells();
+
+  /**
+   * Inspects the cells and returns true if three equal symbols lie on row, column or main diagonal.
+   *
+   * @return boolean telling whether on the current board there are three cells in a line, claimed by the same player.
+   */
+  boolean isThreeInALine();
+
+  /**
+   * If there are three in a line, this method returns the character of those cells. If there are not, it returns the
+   * space character.
+   *
+   * @return a character indicating the occupier of the line or a whitespace.
+   */
+  int getThreeInALineCharIfExists();
 }

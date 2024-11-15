@@ -9,11 +9,12 @@ import eu.kartoffelquadrat.xoxinternals.model.XoxGameReadOnly;
  * @author Maximilian Schiedermeier
  */
 public interface RankingGenerator {
-
-    /**
-     * @param game as the game instance to be evaluated.
-     * @return a ranking object that tells the scores per player and the players in descending order.
-     * @throws LogicException in case the provide game could not be properly interpreted.
-     */
-    Ranking computeRanking(XoxGameReadOnly game) throws LogicException;
+  /**
+   * Analyzes a game to produce a ranking, i.e. what are the longest lines per player currently.
+   *
+   * @param game as the game instance to be evaluated.
+   * @return a ranking object that tells the scores per player and the players in descending order.
+   * @throws LogicException in case the provide game could not be properly interpreted.
+   */
+  Ranking computeRanking(XoxGameReadOnly game) throws LogicException;
 }

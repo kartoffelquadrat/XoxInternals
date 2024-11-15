@@ -3,7 +3,7 @@ package eu.kartoffelquadrat.xoxinternals;
 import eu.kartoffelquadrat.xoxinternals.controller.*;
 import eu.kartoffelquadrat.xoxinternals.model.ModelAccessException;
 import eu.kartoffelquadrat.xoxinternals.model.Player;
-import eu.kartoffelquadrat.xoxinternals.model.XoxGame;
+import eu.kartoffelquadrat.xoxinternals.model.XoxGameImpl;
 import org.junit.Test;
 
 import java.util.Map;
@@ -22,7 +22,7 @@ public class DrawTest extends XoxTestUtils {
         // Prepare the game
         Player x = new Player("X",  "#000000");
         Player o = new Player("O",  "#FFFFFF");
-        XoxGame game = new XoxGame(x, o);
+        XoxGameImpl game = new XoxGameImpl(x, o);
 
         // Draw pattern, X begins
         //  X O X   1 8 9

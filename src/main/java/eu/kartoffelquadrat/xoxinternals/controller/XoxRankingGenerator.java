@@ -1,7 +1,7 @@
 package eu.kartoffelquadrat.xoxinternals.controller;
 
 import eu.kartoffelquadrat.xoxinternals.model.Player;
-import eu.kartoffelquadrat.xoxinternals.model.XoxGame;
+import eu.kartoffelquadrat.xoxinternals.model.XoxGameImpl;
 import eu.kartoffelquadrat.xoxinternals.model.XoxGameReadOnly;
 
 /**
@@ -20,12 +20,12 @@ public class XoxRankingGenerator implements RankingGenerator {
   @Override
   public Ranking computeRanking(XoxGameReadOnly game) throws LogicException {
     // can only be applied on Xox games
-    if (game.getClass() != XoxGame.class) {
+    if (game.getClass() != XoxGameImpl.class) {
       throw new LogicException("Xox Ranking generator can only operate on Xox games.");
     }
-    XoxGame xoxGame = (XoxGame) game;
+    XoxGameImpl xoxGame = (XoxGameImpl) game;
     // Will only provide a ranking with non-0 scores, if the game has already ended.
-    if (!((XoxGame) game).isFinished()) {
+    if (!((XoxGameImpl) game).isFinished()) {
       return new Ranking(game.getPlayers(), new int[] {0, 0}, false);
     }
     // Verify there actually is a player, if not:
@@ -33,7 +33,7 @@ public class XoxRankingGenerator implements RankingGenerator {
       return new Ranking(game.getPlayers(), new int[] {0, 0}, true);
     }
     // Winner (player with 3 in a row) gets 1 point, looser 0.
-    int winnerInt = xoxGame.getBoard().getThreeInALineCharIfExists();
+    int winnerInt = xoxGame.getModifiableBoard().getThreeInALineCharIfExists();
     Player[] rankedPlayers = game.getPlayers();
     // If the non-creator won, overwrite with a ranking that is the inverse of the games player listing.
     if (winnerInt != 1) {
@@ -50,10 +50,10 @@ public class XoxRankingGenerator implements RankingGenerator {
    *
    * @return
    */
-  private boolean isDraw(XoxGame game) {
+  private boolean isDraw(XoxGameImpl game) {
     if (!game.isFinished()) {
       return false;
     }
-    return !game.getBoard().isThreeInALine();
+    return !game.getModifiableBoard().isThreeInALine();
   }
 }

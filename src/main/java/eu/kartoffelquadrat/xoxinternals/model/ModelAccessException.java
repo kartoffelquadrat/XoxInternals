@@ -7,7 +7,12 @@ package eu.kartoffelquadrat.xoxinternals.model;
  * @author Maximilian Schiedermeier
  */
 public class ModelAccessException extends Exception {
-    public ModelAccessException(String cause) {
-        super(cause);
-    }
+  /**
+   * Constructor for custom exception.
+   *
+   * @param cause details for reasons of exception raised.
+   */
+  public ModelAccessException(String cause) {
+    super(cause);
+  }
 }
